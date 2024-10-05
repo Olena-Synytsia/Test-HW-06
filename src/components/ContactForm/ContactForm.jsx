@@ -39,7 +39,7 @@ const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     const contacById = {
       id: nanoid(),
-      ...values, // Додаємо решту полів
+      ...values,
     };
     dispatch(addContact(contacById));
     resetForm();
