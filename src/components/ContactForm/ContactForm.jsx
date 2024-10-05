@@ -7,21 +7,9 @@ import s from "./ContactForm.module.css";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-
   const initialValues = {
     name: "",
     number: "",
-  };
-
-  const handleSubmit = (values, options) => {
-    const newContact = {
-      id: nanoid(),
-      name: values.name,
-      number: values.number,
-    };
-
-    dispatch(addContact(newContact));
-    options.resetForm();
   };
 
   const validationSchema = Yup.object().shape({
@@ -46,6 +34,15 @@ const ContactForm = () => {
       5,
       7
     )}`;
+  };
+
+  const handleSubmit = (values, { resetForm }) => {
+    const contacById = {
+      id: nanoid(),
+      ...values, // Додаємо решту полів
+    };
+    dispatch(addContact(contacById));
+    resetForm();
   };
 
   return (
