@@ -19,8 +19,8 @@ const ContactForm = () => {
       .required("Required field"),
     number: Yup.string()
       .matches(
-        /^\d{3}-\d{2}-\d{2}$/,
-        "Phone number must be in the format XXX-XX-XX"
+        /^\d{3}-\d{3}-\d{4}$/,
+        "Phone number must be in the format XXX-XXX-XXXX"
       )
       .required("Required field"),
   });
@@ -28,11 +28,11 @@ const ContactForm = () => {
   const formatPhoneNumber = (value) => {
     const cleaned = value.replace(/\D/g, "");
     if (cleaned.length <= 3) return cleaned;
-    if (cleaned.length <= 5)
+    if (cleaned.length <= 6)
       return `${cleaned.slice(0, 3)}-${cleaned.slice(3)}`;
-    return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 5)}-${cleaned.slice(
-      5,
-      7
+    return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 6)}-${cleaned.slice(
+      6,
+      10
     )}`;
   };
 

@@ -1,14 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  contacts: {
-    items: [],
-    loading: false,
-    error: null,
-  },
-  filters: {
-    name: "",
-  },
+  items: [],
+  loading: false,
+  error: null,
 };
 
 const contactsSlice = createSlice({
@@ -16,16 +11,13 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     fetchDataSuccess: (state, action) => {
-      console.log("Fetching contacts:", action.payload);
-      state.contacts.items = Array.isArray(action.payload)
-        ? action.payload
-        : [];
+      state.items = action.payload;
     },
     addContact: (state, action) => {
-      state.contacts.items.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteContact: (state, action) => {
-      state.contacts.items = state.contacts.items.filter(
+      state.items = state.items.filter(
         (contact) => contact.id !== action.payload
       );
     },
@@ -35,19 +27,6 @@ const contactsSlice = createSlice({
 export const { addContact, deleteContact, fetchDataSuccess } =
   contactsSlice.actions;
 
-export const selectContacts = (state) => {
-  console.log("State:", state);
-  const contacts = state.contacts.items;
-
-  const filterName = state.filters.name.toLowerCase().trim();
-
-  if (!Array.isArray(contacts)) {
-    return [];
-  }
-
-  return contacts.filter((contact) =>
-    contact.name.toLowerCase().trim().includes(filterName)
-  );
-};
+export const selectContacts = (state) => state.contacts.items;
 
 export default contactsSlice.reducer;
