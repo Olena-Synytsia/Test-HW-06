@@ -7,9 +7,6 @@ import s from "./Contact.module.css";
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
-  // const handleDeleteContact = () => {
-  //   dispatch(deleteContact(id));
-  // };
   return (
     <div className={s.container}>
       <div className={s.elements}>
@@ -34,5 +31,3 @@ const Contact = ({ id, name, number }) => {
 };
 
 export default Contact;
-
-// handleDeleteContact
