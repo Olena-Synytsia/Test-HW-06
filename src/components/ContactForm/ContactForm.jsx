@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { addContactThunk } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contactsOps";
 
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
@@ -37,7 +37,7 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(addContactThunk(values));
+    dispatch(addContact(values));
     resetForm();
   };
 

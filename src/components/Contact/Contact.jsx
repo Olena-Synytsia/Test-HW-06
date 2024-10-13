@@ -1,7 +1,7 @@
 import { BsFillPeopleFill } from "react-icons/bs";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { deleteContactThunk } from "../../redux/contactsOps";
+import { deleteContact } from "../../redux/contactsOps";
 import s from "./Contact.module.css";
 
 const Contact = ({ id, name, number }) => {
@@ -20,10 +20,7 @@ const Contact = ({ id, name, number }) => {
         </p>
       </div>
 
-      <button
-        onClick={() => dispatch(deleteContactThunk(id))}
-        className={s.btn}
-      >
+      <button onClick={() => dispatch(deleteContact(id))} className={s.btn}>
         Delete
       </button>
     </div>
