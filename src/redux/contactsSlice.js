@@ -39,6 +39,7 @@ const contactsSlice = createSlice({
         ),
         (state) => {
           state.loading = true;
+          state.error = null;
         }
       )
       .addMatcher(
