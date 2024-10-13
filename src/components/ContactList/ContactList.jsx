@@ -12,12 +12,10 @@ const ContactList = () => {
   const error = useSelector(selectError);
 
   const filteredContacts = useSelector(selectFilteredContacts);
-  console.log("Filtered contacts:", filteredContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  console.log("Contacts loaded:", filteredContacts);
 
   return (
     <div className={s.container}>

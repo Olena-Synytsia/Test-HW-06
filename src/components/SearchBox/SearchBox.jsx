@@ -7,7 +7,6 @@ const SearchBox = () => {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    console.log("Filter input changed:", event.target.value);
     dispatch(changeFilter(event.target.value));
   };
 
