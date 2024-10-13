@@ -1,6 +1,6 @@
 import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchContacts, deleteContact, addContact } from "./contactsOps";
-import { selectNameFilter } from "./filtersSlice";
+import { selectFilter } from "./filtersSlice";
 
 const initialState = {
   items: [],
@@ -57,17 +57,19 @@ const contactsSlice = createSlice({
   },
 });
 
+export default contactsSlice.reducer;
+
 export const selectContacts = (state) => state.contacts.items;
 export const selectLoading = (state) => state.contacts.loading;
 export const selectError = (state) => state.contacts.error;
 
 export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
+  [selectContacts, selectFilter],
   (contacts, filter) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    console.log("Contacts:", contacts);
+    console.log("Filter:", filter);
+    return contacts.filter((item) =>
+      item.name.toLowerCase().includes(filter.toLowerCase().trim())
     );
   }
 );
-
-export default contactsSlice.reducer;
