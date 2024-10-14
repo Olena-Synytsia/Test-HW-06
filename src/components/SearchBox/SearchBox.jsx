@@ -8,6 +8,7 @@ const SearchBox = () => {
 
   const handleChange = (event) => {
     dispatch(changeFilter(event.target.value));
+    console.log(event.target.value);
   };
 
   return (
